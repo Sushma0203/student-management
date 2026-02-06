@@ -7,7 +7,7 @@ namespace MyFirstApp.Models
         public int Id { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         public int Age { get; set; }
 

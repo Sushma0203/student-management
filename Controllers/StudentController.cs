@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyFirstApp.Data;
 using MyFirstApp.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace MyFirstApp.Controllers
 {
@@ -24,17 +25,28 @@ namespace MyFirstApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student student)
+        public IActionResult Create(Student student, IFormFile photo)
         {
-            if (ModelState.IsValid)
+            if (photo != null)
             {
-                _context.Students.Add(student);
-                _context.SaveChanges();
-                TempData["SuccessMessage"] = "Student added successfully!";
-                return RedirectToAction("Index");
+                string fileName = Guid.NewGuid() + Path.GetExtension(photo.FileName);
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    photo.CopyTo(stream);
+                }
+
+                student.Photo = fileName;
             }
-            return View(student);
+
+            _context.Students.Add(student);
+            _context.SaveChanges();
+
+            TempData["SuccessMessage"] = "Student Added!";
+            return RedirectToAction("Index");
         }
+
 
         public IActionResult Edit(int id)
         {

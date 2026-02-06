@@ -2,15 +2,16 @@
 
 <h2>Add Student</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 
 <label>Name</label>
 <input asp-for="Name" class="form-control" />
-<span asp-validation-for="Name" class="text-danger"></span>
 
-<label class="mt-2">Age</label>
+<label>Age</label>
 <input asp-for="Age" class="form-control" />
-<span asp-validation-for="Age" class="text-danger"></span>
+
+<label>Photo</label>
+<input type="file" name="photo" class="form-control" />
 
 <button class="btn btn-success mt-3">Save</button>
 

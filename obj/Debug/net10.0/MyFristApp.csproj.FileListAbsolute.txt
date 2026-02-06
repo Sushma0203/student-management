@@ -213,3 +213,4 @@
 /Users/sushmathapa/Desktop/c.net/MyFristApp/obj/Debug/net10.0/MyFristApp.genruntimeconfig.cache
 /Users/sushmathapa/Desktop/c.net/MyFristApp/obj/Debug/net10.0/ref/MyFristApp.dll
 /Users/sushmathapa/Desktop/c.net/MyFristApp/obj/Debug/net10.0/compressed/yyb6camzsy-{0}-cxrrikqje0-cxrrikqje0.gz
+/Users/sushmathapa/Desktop/c.net/MyFristApp/obj/Debug/net10.0/MyFristApp.sourcelink.json
