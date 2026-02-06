@@ -1,0 +1,17 @@
+@model MyFirstApp.Models.Student
+
+<h2>Add Student</h2>
+
+<form method="post">
+
+<label>Name</label>
+<input asp-for="Name" class="form-control" />
+<span asp-validation-for="Name" class="text-danger"></span>
+
+<label class="mt-2">Age</label>
+<input asp-for="Age" class="form-control" />
+<span asp-validation-for="Age" class="text-danger"></span>
+
+<button class="btn btn-success mt-3">Save</button>
+
+</form>

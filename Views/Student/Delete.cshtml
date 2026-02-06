@@ -1,0 +1,14 @@
+@model MyFirstApp.Models.Student
+@{
+    Layout = "_Layout";
+}
+
+<h2>Delete Student</h2>
+
+<p>Are you sure you want to delete <strong>@Model.Name</strong>?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Yes, Delete</button>
+    <a href="/Student/Index" class="add-button" style="margin-left:10px;">Cancel</a>
+</form>

@@ -1,0 +1,17 @@
+@model MyFirstApp.Models.Student
+
+<h2>Edit Student</h2>
+
+<form method="post">
+
+<input type="hidden" asp-for="Id" />
+
+<label>Name</label>
+<input asp-for="Name" class="form-control" />
+
+<label class="mt-2">Age</label>
+<input asp-for="Age" class="form-control" />
+
+<button class="btn btn-success mt-3">Update</button>
+
+</form>

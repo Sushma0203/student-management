@@ -1,0 +1,44 @@
+@model IEnumerable<MyFirstApp.Models.Student>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<h2>Student List</h2>
+
+<input class="form-control mb-3" id="searchInput" placeholder="Search..." onkeyup="searchTable()" />
+
+<a asp-action="Create" class="btn btn-primary mb-3">➕ Add Student</a>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var s in Model)
+{
+        <tr>
+            <td>@s.Id</td>
+            <td>@s.Name</td>
+            <td>@s.Age</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@s.Id" class="btn btn-warning btn-sm">Edit</a>
+
+                <form asp-action="Delete" asp-route-id="@s.Id" method="post" style="display:inline">
+                    <button class="btn btn-danger btn-sm"
+                            onclick="return confirm('Delete this student?')">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
