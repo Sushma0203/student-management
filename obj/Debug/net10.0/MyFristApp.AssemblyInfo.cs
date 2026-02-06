@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyFristApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f00e2f4d43d2a02d8eee9dfb7fde16635933b72e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05c0c3d2f98ae0fbb2dc0e0600087e8d8e8e2233")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyFristApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyFristApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

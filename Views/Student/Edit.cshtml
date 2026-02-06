@@ -1,17 +1,60 @@
 @model MyFirstApp.Models.Student
+@{
+    Layout = "_Layout";
+}
 
 <h2>Edit Student</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
 
-<input type="hidden" asp-for="Id" />
+    <label>Name</label>
+    <input asp-for="Name" class="form-control" />
 
-<label>Name</label>
-<input asp-for="Name" class="form-control" />
+    <label class="mt-2">Age</label>
+    <input asp-for="Age" class="form-control" />
 
-<label class="mt-2">Age</label>
-<input asp-for="Age" class="form-control" />
+    <label class="mt-2">Current Photo</label><br />
+    <img id="preview" src="/images/@Model.Photo" style="max-width:300px; border:1px solid #ccc;" />
 
-<button class="btn btn-success mt-3">Update</button>
+    <label class="mt-2">Change Photo</label>
+    <input type="file" id="photoInput" class="form-control" />
+    <input type="hidden" name="CroppedImage" id="CroppedImage" />
 
+    <button class="btn btn-success mt-3">Update Student</button>
 </form>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+<script>
+let cropper;
+const input = document.getElementById('photoInput');
+const image = document.getElementById('preview');
+const hiddenInput = document.getElementById('CroppedImage');
+
+input.addEventListener('change', function(e){
+    const file = e.target.files[0];
+    if(!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(event){
+        image.src = event.target.result;
+
+        if(cropper) cropper.destroy();
+        cropper = new Cropper(image, {
+            aspectRatio: 1,
+            viewMode: 1,
+            autoCropArea: 1,
+            crop(event){
+                const canvas = cropper.getCroppedCanvas({
+                    width: 300,
+                    height: 300
+                });
+                hiddenInput.value = canvas.toDataURL('image/jpeg');
+            }
+        });
+    }
+    reader.readAsDataURL(file);
+});
+</script>
